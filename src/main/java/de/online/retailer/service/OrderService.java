@@ -15,9 +15,6 @@ import java.util.Optional;
 
 @Service
 public class OrderService {
-    public OrderService() {
-    }
-
     Logger logger = LoggerFactory.getLogger(OrderService.class);
 
     private ItemRepository itemRepository;
@@ -30,6 +27,7 @@ public class OrderService {
         Optional<Item> itemOptional = this.itemRepository.findByName(name);
 
         if (!itemOptional.isPresent()) {
+            logger.debug("Could not find any item with name={}", name);
             return null;
         }
         Item item = itemOptional.get();
@@ -53,7 +51,10 @@ public class OrderService {
         NameValueReferableMap facts = new FactMap<Order>();
         facts.setValue("order", order);
         ruleBook.run(facts);
-        Double discountedAmount = ruleBook.getResult().map(a -> a.getValue()).orElse(order.getAmount());
+        Double discountedAmount = ruleBook
+                .getResult()
+                .map(a -> a.getValue())
+                .orElse(order.getAmount());
         order.setDiscountAmount(discountedAmount);
     }
 
@@ -65,7 +66,10 @@ public class OrderService {
         NameValueReferableMap facts = new FactMap<Order>();
         facts.setValue("order", order);
         ruleBook.run(facts);
-        Integer quantityAfterPromotion = ruleBook.getResult().map(a -> a.getValue()).orElse(order.getQuantity());
+        Integer quantityAfterPromotion = ruleBook
+                .getResult()
+                .map(a -> a.getValue())
+                .orElse(order.getQuantity());
         order.setDiscountQuantity(quantityAfterPromotion);
 
     }
