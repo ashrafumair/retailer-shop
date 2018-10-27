@@ -1,0 +1,1 @@
+insert into item values(111, 'Headphones', 1, 200);
