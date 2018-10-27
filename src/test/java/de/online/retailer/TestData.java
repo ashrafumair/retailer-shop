@@ -2,7 +2,6 @@ package de.online.retailer;
 
 import de.online.retailer.domain.Item;
 import de.online.retailer.domain.ItemType;
-import de.online.retailer.domain.Order;
 
 public class TestData {
 
@@ -31,10 +30,4 @@ public class TestData {
                 .build();
     }
 
-    public static Order getOrder(Item item, int quantity) {
-        return Order.builder()
-                .item(item)
-                .quantity(quantity)
-                .build();
-    }
 }

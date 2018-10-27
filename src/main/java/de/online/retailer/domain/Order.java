@@ -9,7 +9,7 @@ public class Order {
 
     private Item item;
     private Double amount;
-    private Double discountAmount;
+    private Double discountAmount; // amount due after applying promotion
     private int quantity;
-    private int discountQuantity;
+    private int discountQuantity; // quantity bought after applying promotion
 }

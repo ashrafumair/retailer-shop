@@ -9,6 +9,7 @@ import de.online.retailer.domain.Order;
 import de.online.retailer.repository.ItemRepository;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.Optional;
@@ -19,6 +20,7 @@ public class OrderService {
 
     private ItemRepository itemRepository;
 
+    @Autowired
     public OrderService(ItemRepository itemRepository) {
         this.itemRepository = itemRepository;
     }

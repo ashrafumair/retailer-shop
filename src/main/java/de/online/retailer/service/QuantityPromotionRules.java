@@ -9,9 +9,6 @@ public class QuantityPromotionRules extends CoRRuleBook<Integer> {
     private static final String AAA_BATTERIES = "AAA Batteries";
     public static final Integer OFFER_QUANTITY = 2;
 
-    public QuantityPromotionRules() {
-    }
-
     @Override
     public void defineRules() {
 

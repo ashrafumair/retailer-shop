@@ -9,7 +9,9 @@ import java.util.List;
 @Builder
 public class ShoppingCart {
 
-    private List<Order> orders;
-    private double totalAmount;
+    public ShoppingCart(List<Order> orders) {
+        this.orders = orders;
+    }
 
+    private List<Order> orders;
 }

@@ -122,8 +122,8 @@ public class OrderServiceTest {
     @Test
     public void noPromotionOn2ChargersTest() {
         final String itemName = "Chargers";
-        Item batteries = TestData.getPowerTypeItem(itemName, 5d);
-        when(itemRepository.findByName(itemName)).thenReturn(Optional.ofNullable(batteries));
+        Item chargers = TestData.getPowerTypeItem(itemName, 5d);
+        when(itemRepository.findByName(itemName)).thenReturn(Optional.ofNullable(chargers));
 
         Order order = orderService.prepareOrder(itemName, 2);
         assertThat(order.getItem().getName()).isEqualTo(itemName);
@@ -138,29 +138,22 @@ public class OrderServiceTest {
     }
 
 
-/*
     @Test
-    public void testNoPromotionOnFoodItems() {
+    public void noPromotionOnFoodItemsTest() {
         final String itemName = "Protein Bars";
         Item proteinBars = TestData.getFoodTypeItem(itemName, 25.0d);
         when(itemRepository.findByName(itemName)).thenReturn(Optional.ofNullable(proteinBars));
 
-        Item itemAfterPromotion = orderService.selectItem(itemName);
-        assertThat(itemAfterPromotion.getName()).isEqualTo(itemName);
-        assertThat(itemAfterPromotion.getType()).isEqualTo(ItemType.FOOD);
-        assertThat(itemAfterPromotion.getPrice()).isEqualTo(25.0d);
+        Order order = orderService.prepareOrder(itemName, 2);
+        assertThat(order.getItem().getName()).isEqualTo(itemName);
+        assertThat(order.getItem().getType()).isEqualTo(ItemType.FOOD);
+        assertThat(order.getAmount()).isEqualTo(50.0d);
+        assertThat(order.getDiscountAmount()).isEqualTo(50.0d);
+        assertThat(order.getQuantity()).isEqualTo(2);
+        assertThat(order.getDiscountQuantity()).isEqualTo(2);
+
+        verify(itemRepository, times(1)).findByName(itemName);
+        verifyNoMoreInteractions(itemRepository);
     }
 
-    @Test
-    public void testNoPromotionOnAABatteries() {
-        final String itemName = "Protein Bars";
-        Item proteinBars = TestData.getFoodTypeItem(itemName, 25.0d);
-        when(itemRepository.findByName(itemName)).thenReturn(Optional.ofNullable(proteinBars));
-
-        Item itemAfterPromotion = orderService.selectItem(itemName);
-        assertThat(itemAfterPromotion.getName()).isEqualTo(itemName);
-        assertThat(itemAfterPromotion.getType()).isEqualTo(ItemType.FOOD);
-        assertThat(itemAfterPromotion.getPrice()).isEqualTo(25.0d);
-    }
-    */
 }
