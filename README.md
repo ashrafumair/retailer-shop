@@ -1,7 +1,7 @@
 # retailer-shop
 
 ## Build:
-To build runt he following
+To build run he following
 
 mvn clean install
 
@@ -15,4 +15,4 @@ I took Java RuleBook as rules engine. RuleBook allowed me to specify rules using
 
 Assumptions:
 I have assumed that the required quantity of items is always available in the DB.
-Orders can be added and removed, but cannot be changed/modified.
+Orders can be added and removed, but cannot be changed or modified.

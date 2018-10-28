@@ -36,7 +36,7 @@ public class ShoppingCartServiceTest {
     }
 
     @Test
-    public void promotionOn1AudioItemTest() {
+    public void outputShoppingCartContentTest() {
         String item1 = "Speakers";
         String item2 = "AAA Batteries";
         String item3 = "Protein Bars (Box)";
